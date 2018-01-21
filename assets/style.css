@@ -1,0 +1,19 @@
+#jumbo {
+    background-color: green;
+}
+#jumboText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 70px;
+    color: aliceblue;
+    font-weight: 900;
+    text-align: center;
+}
+#j2text {
+    font-size: 24px;
+    color: aliceblue;
+    text-align: center;
+    font-style: italic;
+}
+.panel-heading {
+    font-weight: bold;
+}
