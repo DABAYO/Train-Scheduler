@@ -6,9 +6,9 @@ var config = {
     storageBucket: "first-firebase-project-b83f1.appspot.com",
     messagingSenderId: "700854584942"
   };
-firebase.initializeApp(config);
+  firebase.initializeApp(config);
 
-// variables
+  // variables
 var database = firebase.database().ref();
 
 function addRow(obj) {
@@ -20,5 +20,5 @@ function addRow(obj) {
     newRow.append(newCol(minutesAway));
   return newRow;
 }
-$('#results').append(
-  '<tr><td><input name="name"/></td><td><input name="destination"/></td><td><input name="input1" class="last"/></td></tr>'); 
+
+  
