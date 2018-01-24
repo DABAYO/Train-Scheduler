@@ -8,17 +8,30 @@ var config = {
   };
 firebase.initializeApp(config);
 
-// variables
-var database = firebase.database().ref();
-
-function addRow(obj) {
-  let newRow = $("<div>").addClass("row");
-    newRow.append(newCol(name));
-    newRow.append(newCol(destination));
-    newRow.append(newCol(time));
-    newRow.append(newCol(frequency));
-    newRow.append(newCol(minutesAway));
-  return newRow;
+// Constructor Function for a train
+function Train(name, destination, creationTime, frequency) {
+  this.name = name;
+  this.destination = destination;
+  this.creationTime = creationTime;
+  this.frequency = frequency;
 }
-$('#results').append(
-  '<tr><td><input name="name"/></td><td><input name="destination"/></td><td><input name="input1" class="last"/></td></tr>'); 
+
+firebase.initializeApp(config);
+
+const database = firebase.database();
+const jqname = $("#name");
+const jqdestination = $("#destination");
+const jqtime = $("#time");
+const jqfrequency = $("#frequency");
+
+// function addRow(obj) {
+//   let newRow = $("<div>").addClass("row");
+//     newRow.append(newCol(name));
+//     newRow.append(newCol(destination));
+//     newRow.append(newCol(time));
+//     newRow.append(newCol(frequency));
+//     newRow.append(newCol(minutesAway));
+//   return newRow;
+// }
+// $('#results').append(
+//   '<tr><td><input name="name"/></td><td><input name="destination"/></td><td><input name="input1" class="last"/></td></tr>'); 
