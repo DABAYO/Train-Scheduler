@@ -15,12 +15,21 @@ function Train(name, destination, startTime, frequency){
 }
 
 firebase.initializeApp(config);
-
 const database = firebase.database();
-const jqname = $("#name");
-const jqdestination = $("#destination");
-const jqtime = $("#time");
-const jqfrequency =  $("#frequency");
+
+var name = "";
+var destination = "";
+var time = "";
+var frequency = "";
+var currentTime = "";
+var firstTime = "";
+var firstTimeConverted = "";
+var diffTime = "";
+var nextTrain = "";
+var minutesAway = "";
+var nextArrival = "";
+var nextArrivalFormat = "";
+
 
 function addTrainToFirebase(n, d, t, f) {
   let mytrain = new Train(n, d, t, f);
@@ -30,15 +39,15 @@ function addTrainToFirebase(n, d, t, f) {
 
 $("#submit").on("click", function () {
   event.preventDefault();
-  let name = jqname.val().trim();
-  let destination = jqdestination.val().trim();
-  let time = jqtime.val().trim();
-  let frequency = jqfrequency.val().trim();
+  name = $("#name").val().trim();
+  destination = $("#destination").val().trim();
+  time = $("#time").val().trim();
+  frequency =  $("#frequency").val().trim();
   addTrainToFirebase(name, destination, time, parseInt(frequency));
-  jqname.val("");
-  jqdestination.val("");
-  jqtime.val("");
-  jqfrequency.val("");
+  name.val("");
+  destination.val("");
+  time.val("");
+  frequency.val("");
 
   $("#results > tbody").append(addRow());
 });
@@ -54,33 +63,24 @@ database.ref().on("child_added", function(snapshot) {
   console.log(snapshot.val());
   $("#results").append(addRow(snapshot.val()));
 }, function(err) {
-  // Handle errors
+
   console.log("Error: ", err.code);
 });
 
-var currentTime = "";
-var firstTime = "";
-var firstTimeConverted = "";
-var diffTime = "";
-var nextTrain = "";
-var minutesAway = "";
-var nextArrival = "";
-var nextArrivalFormat = "";
-
-firstTimeConverted = moment(firstTime, "kk:mm").subtract(1, "years");
+firstTimeConverted = moment(time, "kk:mm").subtract(1, "years");
 currentTime = moment();
 diffTime = moment().diff(moment(firstTimeConverted), "minutes");
 timeRemaining = diffTime % frequency;
 minutesAway = frequency - timeRemaining;
 nextArrival = moment().add(minutesAway, "minutes");
-nextArrivalFormat = moment(nextTrain).format("kk:mm:");
+nextArrivalFormat = moment(nextTrain).format("kk:mm");
 
 function addRow(obj) {
   let newRow = $("<tr>");
     newRow.append(`<td>${obj.name}</td>`);
     newRow.append(`<td>${obj.destination}</td>`);
     newRow.append(`<td>${obj.frequency}</td>`);
-    newRow.append(`<td>${nextArrival}</td>`);
+    newRow.append(`<td>${nextArrivalFormat}</td>`);
     newRow.append(`<td>${timeRemaining}</td>`);
   return newRow;
 }
