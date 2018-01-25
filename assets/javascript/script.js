@@ -25,6 +25,7 @@ const jqfrequency =  $("#frequency");
 function addTrainToFirebase(n, d, t, f) {
   let mytrain = new Train(n, d, t, f);
   database.ref().push(mytrain);
+  return mytrain;
 }
 
 $("#submit").on("click", function () {
@@ -49,7 +50,7 @@ const userInput = {
   frequency: $("#frequency").val().trim()  
 };
 
-dbRef.on("child_added", function(snapshot) {
+database.ref().on("child_added", function(snapshot) {
   console.log(snapshot.val());
   $("#results").append(addRow(snapshot.val()));
 }, function(err) {
@@ -57,22 +58,22 @@ dbRef.on("child_added", function(snapshot) {
   console.log("Error: ", err.code);
 });
 
-dbRef.orderByChild().on('child_added',function(snapshot){
-  displayMostRecent(snapshot.val());
-},function(err) {
-  console.log("Error: ", err.code);
-});
 function addRow(obj) {
   let newRow = $("<tr>");
-    newRow.append('<td>${obj.name}</td>');
-    newRow.append('<td>${obj.destination}</td>');
-    newRow.append('<td>${obj.time}</td>');
-    newRow.append('<td></td>');
-    newRow.append('<td></td>');
+    newRow.append(`<td>${obj.name}</td>`);
+    newRow.append(`<td>${obj.destination}</td>`);
+    newRow.append(`<td>${obj.time}</td>`);
+    newRow.append(`<td></td>`);
+    newRow.append(`<td></td>`);
   return newRow;
 }
 
-let nextArrival =  add math here
-let minutesAway =  add math here
+mome
+// 
+// const currentTime = moment();
+// console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
+// // Difference between the times
+// const diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+// console.log("DIFFERENCE IN TIME: " + diffTime);
   
