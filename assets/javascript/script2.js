@@ -80,7 +80,7 @@ function addRow(obj) {
     newRow.append(`<td>${obj.name}</td>`);
     newRow.append(`<td>${obj.destination}</td>`);
     newRow.append(`<td>${obj.frequency}</td>`);
-    newRow.append(`<td>${nextArrivalFormat}</td>`);
+    newRow.append(`<td>${nextArrival}</td>`);
     newRow.append(`<td>${timeRemaining}</td>`);
   return newRow;
 }
