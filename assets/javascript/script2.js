@@ -66,12 +66,12 @@ database.ref().on("child_added", function(snapshot) {
 
   console.log("Error: ", err.code);
 });
-
-firstTimeConverted = moment(time, "kk:mm").subtract(1, "years");
+// .subtract(1, "years")
+firstTimeConverted = moment(time, "kk:mm");
 currentTime = moment();
 diffTime = moment().diff(moment(firstTimeConverted), "minutes");
 timeRemaining = diffTime % frequency;
-minutesAway = frequency - timeRemaining;
+minutesAway = currentTime - timeRemaining;
 nextArrival = moment().add(minutesAway, "minutes");
 nextArrivalFormat = moment(nextTrain).format("kk:mm");
 
