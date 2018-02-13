@@ -49,7 +49,7 @@ $("#submit").on("click", function () {
   time.val("");
   frequency.val("");
 
-  // $("#results > tbody").append(addRow());
+  $("#results > tbody").append(addRow());
 });
 
 const userInput = {
