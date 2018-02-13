@@ -85,5 +85,3 @@ function addRow(obj) {
     newRow.append(`<td>${timeRemaining}</td>`);
   return newRow;
 }
-
-  
