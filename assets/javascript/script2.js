@@ -67,13 +67,13 @@ database.ref().on("child_added", function(snapshot) {
   console.log("Error: ", err.code);
 });
 // .subtract(1, "years")
-firstTimeConverted = moment(time, "kk:mm");
-currentTime = moment();
-diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-timeRemaining = diffTime % frequency;
-minutesAway = currentTime - timeRemaining;
-nextArrival = moment().add(minutesAway, "minutes");
-nextArrivalFormat = moment(nextTrain).format("kk:mm");
+// firstTimeConverted = moment(time, "kk:mm");
+// currentTime = moment();
+// diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+// timeRemaining = diffTime % frequency;
+// minutesAway = currentTime - timeRemaining;
+// nextArrival = moment().add(minutesAway, "minutes");
+// nextArrivalFormat = moment(nextTrain).format("kk:mm");
 
 function addRow(obj) {
   let newRow = $("<tr>");
