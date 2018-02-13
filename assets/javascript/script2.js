@@ -66,7 +66,8 @@ database.ref().on("child_added", function(snapshot) {
 
   console.log("Error: ", err.code);
 });
-// .subtract(1, "years")
+// Had trouble getting the Moment.js to work
+// .subtract(1, "years") 
 // firstTimeConverted = moment(time, "kk:mm");
 // currentTime = moment();
 // diffTime = moment().diff(moment(firstTimeConverted), "minutes");
