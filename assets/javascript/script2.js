@@ -49,8 +49,13 @@ $("#submit").on("click", function () {
   time.val("");
   frequency.val("");
 
-  $("#results > tbody").append(addRow());
+ 
 });
+
+ $("#results > tbody").append(addRow());
+
+// $("#results > tbody").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" +
+// frequency + "</td><td>" + nextArrival + "</td><td>" + timeRemaining + "</td></tr>");
 
 const userInput = {
   name: $("#name").val().trim(),
@@ -84,7 +89,5 @@ function addRow(obj) {
     newRow.append(`<td>${timeRemaining}</td>`);
   return newRow;
 }
-// $("#train-table > tbody").append("<tr><td>" + tName + "</td><td>" + tDestination + "</td><td>" +
-// tFrequency + "</td><td>" + tArrival + "</td><td>" + tMinutes + "</td></tr>");
 
   
