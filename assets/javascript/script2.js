@@ -54,8 +54,8 @@ $("#submit").on("click", function () {
 
 //  $("#results > tbody").append(addRow());
 
-$("#results > tbody").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" +
-frequency + "</td><td>" + nextArrival + "</td><td>" + timeRemaining + "</td></tr>");
+// $("#results > tbody").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" +
+// frequency + "</td><td>" + nextArrival + "</td><td>" + timeRemaining + "</td></tr>");
 
 const userInput = {
   name: $("#name").val().trim(),
@@ -66,7 +66,9 @@ const userInput = {
 
 database.ref().on("child_added", function(snapshot) {
   console.log(snapshot.val());
-  $("#results").append(addRow(snapshot.val()));
+  // $("#results").append(addRow(snapshot.val()));
+  $("#results > tbody").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" +
+frequency + "</td><td>" + nextArrival + "</td><td>" + timeRemaining + "</td></tr>");
 }, function(err) {
 
   console.log("Error: ", err.code);
