@@ -49,13 +49,8 @@ $("#submit").on("click", function () {
   time.val("");
   frequency.val("");
 
- 
+  $("#results > tbody").append(addRow());
 });
-
-//  $("#results > tbody").append(addRow());
-
-// $("#results > tbody").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" +
-// frequency + "</td><td>" + nextArrival + "</td><td>" + timeRemaining + "</td></tr>");
 
 const userInput = {
   name: $("#name").val().trim(),
@@ -66,9 +61,7 @@ const userInput = {
 
 database.ref().on("child_added", function(snapshot) {
   console.log(snapshot.val());
-  // $("#results").append(addRow(snapshot.val()));
-  $("#results > tbody").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" +
-frequency + "</td><td>" + nextArrival + "</td><td>" + timeRemaining + "</td></tr>");
+  $("#results").append(addRow(snapshot.val()));
 }, function(err) {
 
   console.log("Error: ", err.code);
@@ -82,14 +75,14 @@ minutesAway = currentTime - timeRemaining;
 nextArrival = moment().add(minutesAway, "minutes");
 nextArrivalFormat = moment(nextTrain).format("kk:mm");
 
-// function addRow(obj) {
-//   let newRow = $("<tr>");
-//     newRow.append(`<td>${obj.name}</td>`);
-//     newRow.append(`<td>${obj.destination}</td>`);
-//     newRow.append(`<td>${obj.frequency}</td>`);
-//     newRow.append(`<td>${nextArrival}</td>`);
-//     newRow.append(`<td>${timeRemaining}</td>`);
-//   return newRow;
-// }
+function addRow(obj) {
+  let newRow = $("<tr>");
+    newRow.append(`<td>${obj.name}</td>`);
+    newRow.append(`<td>${obj.destination}</td>`);
+    newRow.append(`<td>${obj.frequency}</td>`);
+    newRow.append(`<td>${nextArrival}</td>`);
+    newRow.append(`<td>${timeRemaining}</td>`);
+  return newRow;
+}
 
   
